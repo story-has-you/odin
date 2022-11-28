@@ -1,9 +1,7 @@
 buildscript {
     repositories {
-        maven { url "https://maven.aliyun.com/nexus/content/groups/public" }
-        maven { url "https://maven.aliyun.com/nexus/content/repositories/gradle-plugin" }
         mavenCentral()
-        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url 'https://repo.spring.io/milestone' }
     }
     /*定义依赖的springboot版本*/
     dependencies {
@@ -11,17 +9,13 @@ buildscript {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
     }
 }
-group = 'com.storyhasyou'
+group = 'com.storyhasyou.odin'
 version = '1.0.0-SNAPSHOT'
 
 ext {
 
-    libraries = [
-            kratosVersion = '2.7.9',
-    ]
-
     lib = [
-            'blades-of-chaos': "com.storyhasyou.kratos:blades-of-chaos:${kratosVersion}",
+            'blades-of-chaos': "com.storyhasyou.kratos:blades-of-chaos:3.0.0",
     ]
 }
 
@@ -37,7 +31,8 @@ subprojects {
 
     repositories {
         mavenLocal()
-        maven { url "https://maven.aliyun.com/nexus/content/groups/public/" }
+        mavenCentral()
+        maven { url 'https://repo.spring.io/milestone' }
         maven {
             url 'https://maven.aliyun.com/repository/public'
         }

@@ -1,2 +1,3 @@
 rootProject.name = 'odin'
-
+include 'odin-common'
+include 'odin-user-service'
