@@ -15,7 +15,8 @@ version = '1.0.0-SNAPSHOT'
 ext {
 
     lib = [
-            'blades-of-chaos': "com.storyhasyou.kratos:blades-of-chaos:3.0.0",
+            'blades-of-chaos': 'com.storyhasyou.kratos:blades-of-chaos:3.0.0',
+            'mybatis-plus'   : 'com.baomidou:mybatis-plus-boot-starter:3.5.2',
     ]
 }
 
