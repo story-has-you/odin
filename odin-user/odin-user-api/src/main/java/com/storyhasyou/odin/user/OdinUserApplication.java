@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author fangxi created by 2022/11/30
  */
 @EnableBladesOfChaos
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.storyhasyou.odin")
 public class OdinUserApplication {
 
     public static void main(String[] args) {
