@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: odin-cloud
+
+
+aliyun:
+  sms:
+    access-key-id: LTAI5tLLHAnQXt2Y76P5E8k6
+    access-key-secret: BDfpQYJyjPeB9dJ0IjvNRWxlZenGXw
+server:
+  port: 9002

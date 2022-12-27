@@ -18,7 +18,8 @@ ext {
             'blades-of-chaos': 'com.storyhasyou.kratos:blades-of-chaos:3.0.0',
             'mybatis-plus'   : 'com.baomidou:mybatis-plus-boot-starter:3.5.2',
             'kaptcha'        : 'com.baomidou:kaptcha-spring-boot-starter:1.1.0',
-            'springdoc'      : "org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2"
+            'springdoc'      : "org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2",
+            'dysmsapi'       : 'com.aliyun:dysmsapi20170525:2.0.23'
     ]
 }
 
