@@ -8,6 +8,9 @@ import java.math.BigDecimal;
 
 /**
  * @author fangxi created by 2022/12/29
+ */
+
+/**
  * 钱包表
  */
 @Data
