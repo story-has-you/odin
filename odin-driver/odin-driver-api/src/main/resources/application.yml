@@ -7,3 +7,4 @@ spring:
     import:
       - optional:nacos:odin-driver.yaml
       - optional:nacos:register.yaml
+      - optional:nacos:odin-weixin.yaml

@@ -4,3 +4,5 @@ include 'odin-driver:odin-driver-service'
 findProject(':odin-driver:odin-driver-service')?.name = 'odin-driver-service'
 include 'odin-driver:odin-driver-api'
 findProject(':odin-driver:odin-driver-api')?.name = 'odin-driver-api'
+include 'odin-weixin'
+
