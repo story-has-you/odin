@@ -1,0 +1,6 @@
+dependencies {
+    implementation project(':odin-driver:odin-driver-service')
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation "com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery"
+
+}

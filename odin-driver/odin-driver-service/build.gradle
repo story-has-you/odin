@@ -1,0 +1,5 @@
+dependencies {
+    implementation "${lib.'mybatis'}"
+    implementation "mysql:mysql-connector-java"
+    implementation "com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config"
+}

@@ -1,9 +1,0 @@
-dependencies {
-    implementation project(':odin-common')
-    implementation project(':odin-user:odin-user-service')
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    runtimeOnly 'mysql:mysql-connector-java'
-    implementation "${lib.'springdoc'}"
-
-
-}

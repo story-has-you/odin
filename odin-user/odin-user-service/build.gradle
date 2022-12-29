@@ -1,7 +1,0 @@
-dependencies {
-    implementation "${lib.'mybatis-plus'}"
-    implementation "${lib.'kaptcha'}"
-
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-}
