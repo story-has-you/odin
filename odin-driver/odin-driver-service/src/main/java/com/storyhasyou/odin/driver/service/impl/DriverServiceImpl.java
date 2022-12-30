@@ -12,6 +12,7 @@ import com.storyhasyou.odin.driver.pojo.vo.request.RegisterDriverRequestVO;
 import com.storyhasyou.odin.driver.service.interfaces.DriverService;
 import com.storyhasyou.odin.driver.service.interfaces.DriverSettingsService;
 import com.storyhasyou.odin.driver.service.interfaces.WalletService;
+import com.storyhasyou.odin.oss.service.OssService;
 import com.storyhasyou.odin.weixin.service.WxService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,7 @@ public class DriverServiceImpl implements DriverService {
     private final WxService wxService;
     private final DriverSettingsService driverSettingsService;
     private final WalletService walletService;
+    private final OssService ossService;
 
 
     @Override
@@ -49,6 +51,11 @@ public class DriverServiceImpl implements DriverService {
         // 初始化钱包
         initWallet(driverId);
         return IdUtil.randomUUID();
+    }
+
+    @Override
+    public String uploadDriverPhoto(byte[] content) {
+        return ossService.upload(content);
     }
 
     private void initWallet(long driverId) {

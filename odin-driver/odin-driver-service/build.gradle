@@ -1,5 +1,6 @@
 dependencies {
     implementation project(':odin-weixin')
+    implementation project(':odin-oss')
     implementation "${lib.'mybatis'}"
     implementation "${lib.'springdoc'}"
     implementation "mysql:mysql-connector-java"

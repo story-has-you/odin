@@ -9,4 +9,6 @@ public interface DriverService {
 
     String register(RegisterDriverRequestVO requestVO);
 
+    String uploadDriverPhoto(byte[] content);
+
 }

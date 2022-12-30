@@ -9,5 +9,4 @@ spring:
       - optional:nacos:register.yaml
       - optional:nacos:odin-weixin.yaml
       - optional:nacos:sentinel.yaml
-mybatis:
-  mapper-locations: classpath*:mapper/*.xml
+      - optional:nacos:oss.yaml

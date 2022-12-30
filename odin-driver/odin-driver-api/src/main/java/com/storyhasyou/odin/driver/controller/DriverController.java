@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @author fangxi created by 2022/12/30
@@ -30,4 +31,10 @@ public class DriverController {
         return Result.ok(token);
     }
 
+    @PostMapping("/uploadDriverPhoto")
+    @Operation(summary = "上传司机照片")
+    public Result<String> uploadDriverPhoto(MultipartFile file) throws Exception {
+        String url = driverService.uploadDriverPhoto(file.getBytes());
+        return Result.ok(url);
+    }
 }
