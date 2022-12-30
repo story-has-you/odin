@@ -1,6 +1,6 @@
 package com.storyhasyou.odin.driver.mapper;
 
-import com.storyhasyou.odin.driver.entity.DriverLockdown;
+import com.storyhasyou.odin.driver.pojo.entity.DriverLockdown;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

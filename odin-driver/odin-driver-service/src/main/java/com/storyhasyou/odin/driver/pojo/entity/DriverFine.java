@@ -1,4 +1,4 @@
-package com.storyhasyou.odin.driver.entity;
+package com.storyhasyou.odin.driver.pojo.entity;
 
 import com.storyhasyou.kratos.base.BaseEntity;
 import lombok.Data;

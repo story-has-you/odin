@@ -1,6 +1,6 @@
 package com.storyhasyou.odin.driver.mapper;
 
-import com.storyhasyou.odin.driver.entity.Driver;
+import com.storyhasyou.odin.driver.pojo.entity.Driver;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -13,4 +13,7 @@ public interface DriverMapper {
     int insertSelective(Driver record);
 
     Driver selectByPrimaryKey(Long id);
+
+    boolean existsByOpenId(String openid);
+
 }

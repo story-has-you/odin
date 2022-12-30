@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.storyhasyou.odin.driver.mapper.WalletIncomeMapper">
-  <resultMap id="BaseResultMap" type="com.storyhasyou.odin.driver.entity.WalletIncome">
+  <resultMap id="BaseResultMap" type="com.storyhasyou.odin.driver.pojo.entity.WalletIncome">
     <!--@mbg.generated-->
     <!--@Table tb_wallet_income-->
     <id column="id" property="id" />
@@ -31,7 +31,7 @@
     delete from tb_wallet_income
     where id = #{id}
   </delete>
-  <insert id="insertSelective" parameterType="com.storyhasyou.odin.driver.entity.WalletIncome">
+  <insert id="insertSelective" parameterType="com.storyhasyou.odin.driver.pojo.entity.WalletIncome">
     <!--@mbg.generated-->
     insert into tb_wallet_income
     <trim prefix="(" suffix=")" suffixOverrides=",">

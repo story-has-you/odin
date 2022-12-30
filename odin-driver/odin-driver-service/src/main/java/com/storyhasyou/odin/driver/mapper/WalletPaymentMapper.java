@@ -1,6 +1,6 @@
 package com.storyhasyou.odin.driver.mapper;
 
-import com.storyhasyou.odin.driver.entity.WalletPayment;
+import com.storyhasyou.odin.driver.pojo.entity.WalletPayment;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

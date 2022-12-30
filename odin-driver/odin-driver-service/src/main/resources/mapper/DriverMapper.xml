@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.storyhasyou.odin.driver.mapper.DriverMapper">
-    <resultMap id="BaseResultMap" type="com.storyhasyou.odin.driver.entity.Driver">
+    <resultMap id="BaseResultMap" type="com.storyhasyou.odin.driver.pojo.entity.Driver">
         <!--@mbg.generated-->
         <!--@Table hxds_dr.tb_driver-->
         <id column="id" property="id"/>
@@ -83,7 +83,7 @@
         from tb_driver
         where id = #{id}
     </delete>
-    <insert id="insertSelective" parameterType="com.storyhasyou.odin.driver.entity.Driver">
+    <insert id="insertSelective" parameterType="com.storyhasyou.odin.driver.pojo.entity.Driver">
         <!--@mbg.generated-->
         insert into tb_driver
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -277,4 +277,8 @@
             </if>
         </trim>
     </insert>
+
+    <select id="existsByOpenId" resultType="boolean">
+        select exists(select 1 from tb_driver where open_id = #{openId})
+    </select>
 </mapper>

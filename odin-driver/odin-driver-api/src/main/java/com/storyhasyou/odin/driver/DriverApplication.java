@@ -7,8 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author fangxi created by 2022/12/29
  */
-@SpringBootApplication
 @EnableBladesOfChaos
+@SpringBootApplication(scanBasePackages = "com.storyhasyou.odin")
 public class DriverApplication {
 
     public static void main(String[] args) {

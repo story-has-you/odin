@@ -1,4 +1,4 @@
-package com.storyhasyou.odin.driver.entity;
+package com.storyhasyou.odin.driver.pojo.entity;
 
 import com.storyhasyou.kratos.base.BaseEntity;
 import lombok.Data;
@@ -11,43 +11,28 @@ import java.math.BigDecimal;
  */
 
 /**
- * 钱包收入表
+ * 司机钱包付款表
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class WalletIncome extends BaseEntity {
-    /**
-     * uuid字符串
-     */
-    private String uuid;
-
+public class WalletPayment extends BaseEntity {
     /**
      * 司机ID
      */
     private Long driverId;
 
     /**
-     * 金额
+     * 支付金额
      */
     private BigDecimal amount;
 
     /**
-     * 1充值，2奖励，3补贴
+     * 1话费，2罚款，3抽奖，4缴费，5其他
      */
     private Integer type;
 
     /**
-     * 预支付订单ID
-     */
-    private String prepayId;
-
-    /**
-     * 1未支付，2已支付，3已到账
-     */
-    private Integer status;
-
-    /**
-     * 备注信息
+     * 备注
      */
     private String remark;
 }

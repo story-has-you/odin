@@ -2,6 +2,7 @@ package com.storyhasyou.odin.weixin.service;
 
 import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
+import com.storyhasyou.kratos.exceptions.BusinessException;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import me.chanjar.weixin.common.error.WxErrorException;
@@ -21,11 +22,15 @@ public class WxService {
     public String getAccessToken() {
         return wxMaService.getAccessToken();
     }
-    @SneakyThrows(WxErrorException.class)
+
     public String getOpenId(String jsCode) {
-        WxMaJscode2SessionResult wxMaJscode2SessionResult = wxMaService.jsCode2SessionInfo(jsCode);
-        Assert.notNull(wxMaJscode2SessionResult, "获取openId失败");
-        return wxMaJscode2SessionResult.getOpenid();
+        try {
+            WxMaJscode2SessionResult wxMaJscode2SessionResult = wxMaService.jsCode2SessionInfo(jsCode);
+            Assert.notNull(wxMaJscode2SessionResult, "获取openId失败");
+            return wxMaJscode2SessionResult.getOpenid();
+        } catch (WxErrorException e) {
+            throw new BusinessException(e.getMessage());
+        }
     }
 
 }
