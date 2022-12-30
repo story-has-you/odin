@@ -1,7 +1,7 @@
 package com.storyhasyou.odin.driver.service.impl;
 
-import com.storyhasyou.kratos.utils.BeanUtils;
-import com.storyhasyou.kratos.utils.IdUtils;
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.IdUtil;
 import com.storyhasyou.kratos.utils.JacksonUtils;
 import com.storyhasyou.odin.driver.mapper.DriverMapper;
 import com.storyhasyou.odin.driver.pojo.entity.Driver;
@@ -35,11 +35,11 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public long register(RegisterDriverRequestVO requestVO) {
+    public String register(RegisterDriverRequestVO requestVO) {
         String openId = wxService.getOpenId(requestVO.getJsCode());
         Assert.isTrue(!driverMapper.existsByOpenId(openId), "该微信已注册");
-        Driver driver = BeanUtils.copyProperties(requestVO, Driver.class);
-        long driverId = IdUtils.getId();
+        Driver driver = BeanUtil.toBean(requestVO, Driver.class);
+        long driverId = IdUtil.getSnowflakeNextId();
         driver.setId(driverId);
         driver.setOpenId(openId);
 
@@ -48,12 +48,12 @@ public class DriverServiceImpl implements DriverService {
         initDriverSettings(driverId);
         // 初始化钱包
         initWallet(driverId);
-        return driverId;
+        return IdUtil.randomUUID();
     }
 
     private void initWallet(long driverId) {
         Wallet wallet = new Wallet();
-        wallet.setId(IdUtils.getId());
+        wallet.setId(IdUtil.getSnowflakeNextId());
         wallet.setDriverId(driverId);
         wallet.setBalance(BigDecimal.ZERO);
         walletService.insertSelective(wallet);
@@ -61,7 +61,7 @@ public class DriverServiceImpl implements DriverService {
 
     private void initDriverSettings(long driverId) {
         DriverSettings driverSettings = new DriverSettings();
-        driverSettings.setId(IdUtils.getId());
+        driverSettings.setId(IdUtil.getSnowflakeNextId());
         driverSettings.setDriverId(driverId);
         DriverSettingsModel defaultSettings = new DriverSettingsModel("", false, 0, 5, false);
         driverSettings.setSettings(JacksonUtils.serialize(defaultSettings));

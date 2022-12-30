@@ -7,6 +7,6 @@ import com.storyhasyou.odin.driver.pojo.vo.request.RegisterDriverRequestVO;
  */
 public interface DriverService {
 
-    long register(RegisterDriverRequestVO requestVO);
+    String register(RegisterDriverRequestVO requestVO);
 
 }

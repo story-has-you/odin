@@ -7,3 +7,4 @@ spring:
     import:
       - optional:nacos:odin-gateway.yaml
       - optional:nacos:register.yaml
+      - optional:nacos:sentinel.yaml

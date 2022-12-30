@@ -25,9 +25,9 @@ public class DriverController {
 
     @PostMapping("/register")
     @Operation(summary = "注册司机")
-    private Result<Long> register(@RequestBody @Valid RegisterDriverRequestVO requestVO) {
-        long driverId = driverService.register(requestVO);
-        return Result.ok(driverId);
+    private Result<String> register(@RequestBody @Valid RegisterDriverRequestVO requestVO) {
+        String token = driverService.register(requestVO);
+        return Result.ok(token);
     }
 
 }

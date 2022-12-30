@@ -8,3 +8,6 @@ spring:
       - optional:nacos:odin-driver.yaml
       - optional:nacos:register.yaml
       - optional:nacos:odin-weixin.yaml
+      - optional:nacos:sentinel.yaml
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
