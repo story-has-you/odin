@@ -63,7 +63,8 @@ public class DriverServiceImpl implements DriverService {
         DriverSettings driverSettings = new DriverSettings();
         driverSettings.setId(IdUtils.getId());
         driverSettings.setDriverId(driverId);
-        driverSettings.setSettings(JacksonUtils.serialize(new DriverSettingsModel()));
+        DriverSettingsModel defaultSettings = new DriverSettingsModel("", false, 0, 5, false);
+        driverSettings.setSettings(JacksonUtils.serialize(defaultSettings));
         driverSettingsService.insertSelective(driverSettings);
     }
 }
