@@ -2,13 +2,17 @@ package com.storyhasyou.odin.driver.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.IdUtil;
+import cn.hutool.core.util.IdcardUtil;
 import com.storyhasyou.kratos.utils.JacksonUtils;
+import com.storyhasyou.odin.driver.emums.driver.DriverRealAuthEnum;
+import com.storyhasyou.odin.driver.emums.driver.DriverStatusEnum;
 import com.storyhasyou.odin.driver.mapper.DriverMapper;
 import com.storyhasyou.odin.driver.pojo.entity.Driver;
 import com.storyhasyou.odin.driver.pojo.entity.DriverSettings;
 import com.storyhasyou.odin.driver.pojo.entity.Wallet;
 import com.storyhasyou.odin.driver.pojo.model.DriverSettingsModel;
 import com.storyhasyou.odin.driver.pojo.vo.request.RegisterDriverRequestVO;
+import com.storyhasyou.odin.driver.pojo.vo.request.UpdateDriverRequestVO;
 import com.storyhasyou.odin.driver.service.interfaces.DriverService;
 import com.storyhasyou.odin.driver.service.interfaces.DriverSettingsService;
 import com.storyhasyou.odin.driver.service.interfaces.WalletService;
@@ -20,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 /**
  * @author fangxi created by 2022/12/29
@@ -56,6 +61,17 @@ public class DriverServiceImpl implements DriverService {
     @Override
     public String uploadDriverPhoto(byte[] content) {
         return ossService.upload(content);
+    }
+
+    @Override
+    public boolean updateDriverInfo(UpdateDriverRequestVO requestVO) {
+        Driver driver = BeanUtil.toBean(requestVO, Driver.class);
+        LocalDate birthDate = IdcardUtil.getBirthDate(requestVO.getPid()).toLocalDateTime().toLocalDate();
+        driver.setBirthday(birthDate);
+        driver.setSex(IdcardUtil.getGenderByIdCard(requestVO.getPid()));
+        driver.setStatus(DriverStatusEnum.NORMAL.getCode());
+        driver.setRealAuth(DriverRealAuthEnum.AUDIT.getCode());
+        return driverMapper.updateByPrimaryKeySelective(driver) > 0;
     }
 
     private void initWallet(long driverId) {

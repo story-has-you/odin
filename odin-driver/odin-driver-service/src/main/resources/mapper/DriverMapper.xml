@@ -3,7 +3,7 @@
 <mapper namespace="com.storyhasyou.odin.driver.mapper.DriverMapper">
     <resultMap id="BaseResultMap" type="com.storyhasyou.odin.driver.pojo.entity.Driver">
         <!--@mbg.generated-->
-        <!--@Table hxds_dr.tb_driver-->
+        <!--@Table tb_driver-->
         <id column="id" property="id"/>
         <result column="open_id" property="openId"/>
         <result column="nickname" property="nickname"/>
@@ -277,6 +277,104 @@
             </if>
         </trim>
     </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.storyhasyou.odin.driver.pojo.entity.Driver">
+        <!--@mbg.generated-->
+        update tb_driver
+        <set>
+            <if test="openId != null and openId != ''">
+                open_id = #{openId},
+            </if>
+            <if test="nickname != null and nickname != ''">
+                nickname = #{nickname},
+            </if>
+            <if test="name != null and name != ''">
+                `name` = #{name},
+            </if>
+            <if test="sex != null and sex != ''">
+                sex = #{sex},
+            </if>
+            <if test="photo != null and photo != ''">
+                photo = #{photo},
+            </if>
+            <if test="pid != null and pid != ''">
+                pid = #{pid},
+            </if>
+            <if test="birthday != null">
+                birthday = #{birthday},
+            </if>
+            <if test="tel != null and tel != ''">
+                tel = #{tel},
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email},
+            </if>
+            <if test="mailAddress != null and mailAddress != ''">
+                mail_address = #{mailAddress},
+            </if>
+            <if test="contactName != null and contactName != ''">
+                contact_name = #{contactName},
+            </if>
+            <if test="contactTel != null and contactTel != ''">
+                contact_tel = #{contactTel},
+            </if>
+            <if test="realAuth != null">
+                real_auth = #{realAuth},
+            </if>
+            <if test="idcardAddress != null and idcardAddress != ''">
+                idcard_address = #{idcardAddress},
+            </if>
+            <if test="idcardExpiration != null">
+                idcard_expiration = #{idcardExpiration},
+            </if>
+            <if test="idcardFront != null and idcardFront != ''">
+                idcard_front = #{idcardFront},
+            </if>
+            <if test="idcardBack != null and idcardBack != ''">
+                idcard_back = #{idcardBack},
+            </if>
+            <if test="idcardHolding != null and idcardHolding != ''">
+                idcard_holding = #{idcardHolding},
+            </if>
+            <if test="drcardType != null and drcardType != ''">
+                drcard_type = #{drcardType},
+            </if>
+            <if test="drcardExpiration != null">
+                drcard_expiration = #{drcardExpiration},
+            </if>
+            <if test="drcardIssueDate != null">
+                drcard_issue_date = #{drcardIssueDate},
+            </if>
+            <if test="drcardFront != null and drcardFront != ''">
+                drcard_front = #{drcardFront},
+            </if>
+            <if test="drcardBack != null and drcardBack != ''">
+                drcard_back = #{drcardBack},
+            </if>
+            <if test="drcardHolding != null and drcardHolding != ''">
+                drcard_holding = #{drcardHolding},
+            </if>
+            <if test="home != null and home != ''">
+                home = #{home},
+            </if>
+            <if test="summary != null and summary != ''">
+                summary = #{summary},
+            </if>
+            <if test="archive != null">
+                archive = #{archive},
+            </if>
+            <if test="status != null">
+                `status` = #{status},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
 
     <select id="existsByOpenId" resultType="boolean">
         select exists(select 1 from tb_driver where open_id = #{openId})

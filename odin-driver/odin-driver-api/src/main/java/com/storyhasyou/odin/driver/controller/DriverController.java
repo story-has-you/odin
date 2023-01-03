@@ -2,6 +2,7 @@ package com.storyhasyou.odin.driver.controller;
 
 import com.storyhasyou.kratos.result.Result;
 import com.storyhasyou.odin.driver.pojo.vo.request.RegisterDriverRequestVO;
+import com.storyhasyou.odin.driver.pojo.vo.request.UpdateDriverRequestVO;
 import com.storyhasyou.odin.driver.service.interfaces.DriverService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -36,5 +37,12 @@ public class DriverController {
     public Result<String> uploadDriverPhoto(MultipartFile file) throws Exception {
         String url = driverService.uploadDriverPhoto(file.getBytes());
         return Result.ok(url);
+    }
+
+    @PostMapping("/updateDriverInfo")
+    @Operation(summary = "更新司机信息")
+    public Result<Boolean> updateDriverInfo(@RequestBody @Valid UpdateDriverRequestVO requestVO) {
+        boolean result = driverService.updateDriverInfo(requestVO);
+        return Result.ok(result);
     }
 }

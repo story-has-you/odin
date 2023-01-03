@@ -14,6 +14,8 @@ public interface DriverMapper {
 
     Driver selectByPrimaryKey(Long id);
 
+    int updateByPrimaryKeySelective(Driver record);
+
     boolean existsByOpenId(String openid);
 
 }
