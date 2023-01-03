@@ -379,4 +379,12 @@
     <select id="existsByOpenId" resultType="boolean">
         select exists(select 1 from tb_driver where open_id = #{openId})
     </select>
+
+    <select id="selectByOpenId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_driver
+        where open_id = #{openId}
+    </select>
+
 </mapper>

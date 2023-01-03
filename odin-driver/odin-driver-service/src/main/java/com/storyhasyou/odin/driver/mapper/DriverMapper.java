@@ -18,4 +18,6 @@ public interface DriverMapper {
 
     boolean existsByOpenId(String openid);
 
+    Driver selectByOpenId(String openid);
+
 }

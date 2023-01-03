@@ -14,4 +14,6 @@ public interface DriverService {
 
     boolean updateDriverInfo(UpdateDriverRequestVO requestVO);
 
+    String login(String openId);
+
 }

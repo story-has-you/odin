@@ -3,6 +3,7 @@ package com.storyhasyou.odin.driver.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.IdcardUtil;
+import com.storyhasyou.kratos.exceptions.BusinessException;
 import com.storyhasyou.kratos.utils.JacksonUtils;
 import com.storyhasyou.odin.driver.emums.driver.DriverRealAuthEnum;
 import com.storyhasyou.odin.driver.emums.driver.DriverStatusEnum;
@@ -72,6 +73,19 @@ public class DriverServiceImpl implements DriverService {
         driver.setStatus(DriverStatusEnum.NORMAL.getCode());
         driver.setRealAuth(DriverRealAuthEnum.AUDIT.getCode());
         return driverMapper.updateByPrimaryKeySelective(driver) > 0;
+    }
+
+    @Override
+    public String login(String openId) {
+        Driver driver = driverMapper.selectByOpenId(openId);
+        Assert.notNull(driver, "该微信未注册");
+        if (DriverStatusEnum.DISABLE.getCode().equals(driver.getStatus())) {
+            throw new BusinessException("该账号已被禁用");
+        }
+
+        String token = IdUtil.randomUUID();
+
+        return token;
     }
 
     private void initWallet(long driverId) {

@@ -10,3 +10,4 @@ spring:
       - optional:nacos:odin-weixin.yaml
       - optional:nacos:sentinel.yaml
       - optional:nacos:oss.yaml
+      - optional:nacos:mybatis.yaml

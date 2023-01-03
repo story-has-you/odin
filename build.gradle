@@ -15,7 +15,7 @@ version = '1.0.0-SNAPSHOT'
 ext {
 
     lib = [
-            'blades-of-chaos'    : 'com.storyhasyou.kratos:blades-of-chaos:3.0.1',
+            'blades-of-chaos'    : 'com.storyhasyou.kratos:blades-of-chaos:3.0.2',
             'mybatis'            : 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.1',
             'springdoc'          : 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2',
             'weixin-java-miniapp': 'com.github.binarywang:weixin-java-miniapp:4.4.0',
