@@ -1,6 +1,7 @@
 package com.storyhasyou.odin.driver.controller;
 
 import com.storyhasyou.kratos.result.Result;
+import com.storyhasyou.odin.driver.pojo.model.CurrentDriver;
 import com.storyhasyou.odin.driver.pojo.vo.request.RegisterDriverRequestVO;
 import com.storyhasyou.odin.driver.pojo.vo.request.UpdateDriverRequestVO;
 import com.storyhasyou.odin.driver.service.interfaces.DriverService;
@@ -44,5 +45,12 @@ public class DriverController {
     public Result<Boolean> updateDriverInfo(@RequestBody @Valid UpdateDriverRequestVO requestVO) {
         boolean result = driverService.updateDriverInfo(requestVO);
         return Result.ok(result);
+    }
+
+    @PostMapping("/login")
+    @Operation(summary = "司机登录")
+    public Result<CurrentDriver> login(@RequestBody String openId) {
+        CurrentDriver currentDriver = driverService.login(openId);
+        return Result.ok(currentDriver);
     }
 }

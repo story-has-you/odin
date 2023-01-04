@@ -1,5 +1,6 @@
 package com.storyhasyou.odin.driver.service.interfaces;
 
+import com.storyhasyou.odin.driver.pojo.model.CurrentDriver;
 import com.storyhasyou.odin.driver.pojo.vo.request.RegisterDriverRequestVO;
 import com.storyhasyou.odin.driver.pojo.vo.request.UpdateDriverRequestVO;
 
@@ -14,6 +15,6 @@ public interface DriverService {
 
     boolean updateDriverInfo(UpdateDriverRequestVO requestVO);
 
-    String login(String openId);
+    CurrentDriver login(String openId);
 
 }

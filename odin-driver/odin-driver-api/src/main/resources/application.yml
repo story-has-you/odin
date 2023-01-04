@@ -11,3 +11,4 @@ spring:
       - optional:nacos:sentinel.yaml
       - optional:nacos:oss.yaml
       - optional:nacos:mybatis.yaml
+      - optional:nacos:redis.yaml

@@ -11,9 +11,11 @@ import com.storyhasyou.odin.driver.mapper.DriverMapper;
 import com.storyhasyou.odin.driver.pojo.entity.Driver;
 import com.storyhasyou.odin.driver.pojo.entity.DriverSettings;
 import com.storyhasyou.odin.driver.pojo.entity.Wallet;
+import com.storyhasyou.odin.driver.pojo.model.CurrentDriver;
 import com.storyhasyou.odin.driver.pojo.model.DriverSettingsModel;
 import com.storyhasyou.odin.driver.pojo.vo.request.RegisterDriverRequestVO;
 import com.storyhasyou.odin.driver.pojo.vo.request.UpdateDriverRequestVO;
+import com.storyhasyou.odin.driver.service.DriverRedisService;
 import com.storyhasyou.odin.driver.service.interfaces.DriverService;
 import com.storyhasyou.odin.driver.service.interfaces.DriverSettingsService;
 import com.storyhasyou.odin.driver.service.interfaces.WalletService;
@@ -26,6 +28,7 @@ import org.springframework.util.Assert;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Optional;
 
 /**
  * @author fangxi created by 2022/12/29
@@ -39,6 +42,7 @@ public class DriverServiceImpl implements DriverService {
     private final DriverSettingsService driverSettingsService;
     private final WalletService walletService;
     private final OssService ossService;
+    private final DriverRedisService driverRedisService;
 
 
     @Override
@@ -76,16 +80,21 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
-    public String login(String openId) {
+    public CurrentDriver login(String openId) {
         Driver driver = driverMapper.selectByOpenId(openId);
         Assert.notNull(driver, "该微信未注册");
         if (DriverStatusEnum.DISABLE.getCode().equals(driver.getStatus())) {
             throw new BusinessException("该账号已被禁用");
         }
 
-        String token = IdUtil.randomUUID();
+        return Optional.ofNullable(driverRedisService.getCurrentDriver(openId))
+                .orElseGet(() -> {
+                    String token = IdUtil.randomUUID();
+                    CurrentDriver currentDriver = new CurrentDriver(driver.getId(), driver.getOpenId(), token);
+                    driverRedisService.driverLogin(currentDriver);
+                    return currentDriver;
+                });
 
-        return token;
     }
 
     private void initWallet(long driverId) {
