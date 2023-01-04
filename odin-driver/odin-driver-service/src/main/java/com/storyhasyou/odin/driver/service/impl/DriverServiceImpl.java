@@ -9,12 +9,13 @@ import com.storyhasyou.odin.driver.emums.driver.DriverRealAuthEnum;
 import com.storyhasyou.odin.driver.emums.driver.DriverStatusEnum;
 import com.storyhasyou.odin.driver.mapper.DriverMapper;
 import com.storyhasyou.odin.driver.pojo.entity.Driver;
-import com.storyhasyou.odin.driver.pojo.entity.DriverSettings;
 import com.storyhasyou.odin.driver.pojo.entity.Wallet;
 import com.storyhasyou.odin.driver.pojo.model.CurrentDriver;
-import com.storyhasyou.odin.driver.pojo.model.DriverSettingsModel;
+import com.storyhasyou.odin.driver.pojo.model.DriverSettings;
+import com.storyhasyou.odin.driver.pojo.model.DriverSummary;
 import com.storyhasyou.odin.driver.pojo.vo.request.RegisterDriverRequestVO;
 import com.storyhasyou.odin.driver.pojo.vo.request.UpdateDriverRequestVO;
+import com.storyhasyou.odin.driver.pojo.vo.response.DriverResponseVO;
 import com.storyhasyou.odin.driver.service.DriverRedisService;
 import com.storyhasyou.odin.driver.service.interfaces.DriverService;
 import com.storyhasyou.odin.driver.service.interfaces.DriverSettingsService;
@@ -54,7 +55,7 @@ public class DriverServiceImpl implements DriverService {
         long driverId = IdUtil.getSnowflakeNextId();
         driver.setId(driverId);
         driver.setOpenId(openId);
-
+        driver.setSummary(JacksonUtils.serialize(DriverSummary.init()));
         driverMapper.insertSelective(driver);
         // 初始化司机设置
         initDriverSettings(driverId);
@@ -89,12 +90,23 @@ public class DriverServiceImpl implements DriverService {
 
         return Optional.ofNullable(driverRedisService.getCurrentDriver(openId))
                 .orElseGet(() -> {
-                    String token = IdUtil.randomUUID();
+                    String token = IdUtil.simpleUUID();
                     CurrentDriver currentDriver = new CurrentDriver(driver.getId(), driver.getOpenId(), token);
                     driverRedisService.driverLogin(currentDriver);
                     return currentDriver;
                 });
 
+    }
+
+    @Override
+    public DriverResponseVO selectById(long driverId) {
+        return Optional.ofNullable(driverMapper.selectByPrimaryKey(driverId))
+                .map(driver -> {
+                    DriverResponseVO driverResponseVO = BeanUtil.toBeanIgnoreError(driver, DriverResponseVO.class);
+                    driverResponseVO.setSummary(JacksonUtils.parse(driver.getSummary(), DriverSummary.class));
+                    return driverResponseVO;
+                })
+                .orElseThrow(() -> new BusinessException("司机不存在"));
     }
 
     private void initWallet(long driverId) {
@@ -106,10 +118,10 @@ public class DriverServiceImpl implements DriverService {
     }
 
     private void initDriverSettings(long driverId) {
-        DriverSettings driverSettings = new DriverSettings();
+        com.storyhasyou.odin.driver.pojo.entity.DriverSettings driverSettings = new com.storyhasyou.odin.driver.pojo.entity.DriverSettings();
         driverSettings.setId(IdUtil.getSnowflakeNextId());
         driverSettings.setDriverId(driverId);
-        DriverSettingsModel defaultSettings = new DriverSettingsModel("", false, 0, 5, false);
+        DriverSettings defaultSettings = new DriverSettings("", false, 0, 5, false);
         driverSettings.setSettings(JacksonUtils.serialize(defaultSettings));
         driverSettingsService.insertSelective(driverSettings);
     }

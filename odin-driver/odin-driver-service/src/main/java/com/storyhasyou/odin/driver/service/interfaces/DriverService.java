@@ -3,6 +3,7 @@ package com.storyhasyou.odin.driver.service.interfaces;
 import com.storyhasyou.odin.driver.pojo.model.CurrentDriver;
 import com.storyhasyou.odin.driver.pojo.vo.request.RegisterDriverRequestVO;
 import com.storyhasyou.odin.driver.pojo.vo.request.UpdateDriverRequestVO;
+import com.storyhasyou.odin.driver.pojo.vo.response.DriverResponseVO;
 
 /**
  * @author fangxi created by 2022/12/29
@@ -16,5 +17,7 @@ public interface DriverService {
     boolean updateDriverInfo(UpdateDriverRequestVO requestVO);
 
     CurrentDriver login(String openId);
+
+    DriverResponseVO selectById(long driverId);
 
 }
