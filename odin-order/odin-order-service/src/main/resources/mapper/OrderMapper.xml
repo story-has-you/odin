@@ -1,360 +1,375 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.storyhasyou.odin.order.mapper.OrderMapper">
-  <resultMap id="BaseResultMap" type="com.storyhasyou.odin.order.pojo.entity.Order">
-    <!--@mbg.generated-->
-    <!--@Table tb_order-->
-    <id column="id" property="id" />
-    <result column="uuid" property="uuid" />
-    <result column="customer_id" property="customerId" />
-    <result column="start_place" property="startPlace" />
-    <result column="start_place_location" property="startPlaceLocation" />
-    <result column="end_place" property="endPlace" />
-    <result column="end_place_location" property="endPlaceLocation" />
-    <result column="expects_mileage" property="expectsMileage" />
-    <result column="real_mileage" property="realMileage" />
-    <result column="return_mileage" property="returnMileage" />
-    <result column="expects_fee" property="expectsFee" />
-    <result column="favour_fee" property="favourFee" />
-    <result column="incentive_fee" property="incentiveFee" />
-    <result column="real_fee" property="realFee" />
-    <result column="driver_id" property="driverId" />
-    <result column="date" property="date" />
-    <result column="accept_time" property="acceptTime" />
-    <result column="arrive_time" property="arriveTime" />
-    <result column="start_time" property="startTime" />
-    <result column="end_time" property="endTime" />
-    <result column="waiting_minute" property="waitingMinute" />
-    <result column="prepay_id" property="prepayId" />
-    <result column="pay_id" property="payId" />
-    <result column="pay_time" property="payTime" />
-    <result column="charge_rule_id" property="chargeRuleId" />
-    <result column="cancel_rule_id" property="cancelRuleId" />
-    <result column="car_plate" property="carPlate" />
-    <result column="car_type" property="carType" />
-    <result column="status" property="status" />
-    <result column="remark" property="remark" />
-    <result column="create_time" property="createTime" />
-    <result column="update_time" property="updateTime" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    <!--@mbg.generated-->
-    id, uuid, customer_id, start_place, start_place_location, end_place, end_place_location, 
-    expects_mileage, real_mileage, return_mileage, expects_fee, favour_fee, incentive_fee, 
-    real_fee, driver_id, `date`, accept_time, arrive_time, start_time, end_time, waiting_minute, 
-    prepay_id, pay_id, pay_time, charge_rule_id, cancel_rule_id, car_plate, car_type, 
-    `status`, remark, create_time, update_time
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    <!--@mbg.generated-->
-    select 
-    <include refid="Base_Column_List" />
-    from tb_order
-    where id = #{id}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    <!--@mbg.generated-->
-    delete from tb_order
-    where id = #{id}
-  </delete>
-  <insert id="insertSelective" parameterType="com.storyhasyou.odin.order.pojo.entity.Order">
-    <!--@mbg.generated-->
-    insert into tb_order
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="uuid != null and uuid != ''">
-        uuid,
-      </if>
-      <if test="customerId != null">
-        customer_id,
-      </if>
-      <if test="startPlace != null and startPlace != ''">
-        start_place,
-      </if>
-      <if test="startPlaceLocation != null and startPlaceLocation != ''">
-        start_place_location,
-      </if>
-      <if test="endPlace != null and endPlace != ''">
-        end_place,
-      </if>
-      <if test="endPlaceLocation != null and endPlaceLocation != ''">
-        end_place_location,
-      </if>
-      <if test="expectsMileage != null">
-        expects_mileage,
-      </if>
-      <if test="realMileage != null">
-        real_mileage,
-      </if>
-      <if test="returnMileage != null">
-        return_mileage,
-      </if>
-      <if test="expectsFee != null">
-        expects_fee,
-      </if>
-      <if test="favourFee != null">
-        favour_fee,
-      </if>
-      <if test="incentiveFee != null">
-        incentive_fee,
-      </if>
-      <if test="realFee != null">
-        real_fee,
-      </if>
-      <if test="driverId != null">
-        driver_id,
-      </if>
-      <if test="date != null">
-        `date`,
-      </if>
-      <if test="acceptTime != null">
-        accept_time,
-      </if>
-      <if test="arriveTime != null">
-        arrive_time,
-      </if>
-      <if test="startTime != null">
-        start_time,
-      </if>
-      <if test="endTime != null">
-        end_time,
-      </if>
-      <if test="waitingMinute != null">
-        waiting_minute,
-      </if>
-      <if test="prepayId != null and prepayId != ''">
-        prepay_id,
-      </if>
-      <if test="payId != null and payId != ''">
-        pay_id,
-      </if>
-      <if test="payTime != null">
-        pay_time,
-      </if>
-      <if test="chargeRuleId != null">
-        charge_rule_id,
-      </if>
-      <if test="cancelRuleId != null">
-        cancel_rule_id,
-      </if>
-      <if test="carPlate != null and carPlate != ''">
-        car_plate,
-      </if>
-      <if test="carType != null and carType != ''">
-        car_type,
-      </if>
-      <if test="status != null">
-        `status`,
-      </if>
-      <if test="remark != null and remark != ''">
-        remark,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="updateTime != null">
-        update_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id},
-      </if>
-      <if test="uuid != null and uuid != ''">
-        #{uuid},
-      </if>
-      <if test="customerId != null">
-        #{customerId},
-      </if>
-      <if test="startPlace != null and startPlace != ''">
-        #{startPlace},
-      </if>
-      <if test="startPlaceLocation != null and startPlaceLocation != ''">
-        #{startPlaceLocation},
-      </if>
-      <if test="endPlace != null and endPlace != ''">
-        #{endPlace},
-      </if>
-      <if test="endPlaceLocation != null and endPlaceLocation != ''">
-        #{endPlaceLocation},
-      </if>
-      <if test="expectsMileage != null">
-        #{expectsMileage},
-      </if>
-      <if test="realMileage != null">
-        #{realMileage},
-      </if>
-      <if test="returnMileage != null">
-        #{returnMileage},
-      </if>
-      <if test="expectsFee != null">
-        #{expectsFee},
-      </if>
-      <if test="favourFee != null">
-        #{favourFee},
-      </if>
-      <if test="incentiveFee != null">
-        #{incentiveFee},
-      </if>
-      <if test="realFee != null">
-        #{realFee},
-      </if>
-      <if test="driverId != null">
-        #{driverId},
-      </if>
-      <if test="date != null">
-        #{date},
-      </if>
-      <if test="acceptTime != null">
-        #{acceptTime},
-      </if>
-      <if test="arriveTime != null">
-        #{arriveTime},
-      </if>
-      <if test="startTime != null">
-        #{startTime},
-      </if>
-      <if test="endTime != null">
-        #{endTime},
-      </if>
-      <if test="waitingMinute != null">
-        #{waitingMinute},
-      </if>
-      <if test="prepayId != null and prepayId != ''">
-        #{prepayId},
-      </if>
-      <if test="payId != null and payId != ''">
-        #{payId},
-      </if>
-      <if test="payTime != null">
-        #{payTime},
-      </if>
-      <if test="chargeRuleId != null">
-        #{chargeRuleId},
-      </if>
-      <if test="cancelRuleId != null">
-        #{cancelRuleId},
-      </if>
-      <if test="carPlate != null and carPlate != ''">
-        #{carPlate},
-      </if>
-      <if test="carType != null and carType != ''">
-        #{carType},
-      </if>
-      <if test="status != null">
-        #{status},
-      </if>
-      <if test="remark != null and remark != ''">
-        #{remark},
-      </if>
-      <if test="createTime != null">
-        #{createTime},
-      </if>
-      <if test="updateTime != null">
-        #{updateTime},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.storyhasyou.odin.order.pojo.entity.Order">
-    <!--@mbg.generated-->
-    update tb_order
-    <set>
-      <if test="uuid != null and uuid != ''">
-        uuid = #{uuid},
-      </if>
-      <if test="customerId != null">
-        customer_id = #{customerId},
-      </if>
-      <if test="startPlace != null and startPlace != ''">
-        start_place = #{startPlace},
-      </if>
-      <if test="startPlaceLocation != null and startPlaceLocation != ''">
-        start_place_location = #{startPlaceLocation},
-      </if>
-      <if test="endPlace != null and endPlace != ''">
-        end_place = #{endPlace},
-      </if>
-      <if test="endPlaceLocation != null and endPlaceLocation != ''">
-        end_place_location = #{endPlaceLocation},
-      </if>
-      <if test="expectsMileage != null">
-        expects_mileage = #{expectsMileage},
-      </if>
-      <if test="realMileage != null">
-        real_mileage = #{realMileage},
-      </if>
-      <if test="returnMileage != null">
-        return_mileage = #{returnMileage},
-      </if>
-      <if test="expectsFee != null">
-        expects_fee = #{expectsFee},
-      </if>
-      <if test="favourFee != null">
-        favour_fee = #{favourFee},
-      </if>
-      <if test="incentiveFee != null">
-        incentive_fee = #{incentiveFee},
-      </if>
-      <if test="realFee != null">
-        real_fee = #{realFee},
-      </if>
-      <if test="driverId != null">
-        driver_id = #{driverId},
-      </if>
-      <if test="date != null">
-        `date` = #{date},
-      </if>
-      <if test="acceptTime != null">
-        accept_time = #{acceptTime},
-      </if>
-      <if test="arriveTime != null">
-        arrive_time = #{arriveTime},
-      </if>
-      <if test="startTime != null">
-        start_time = #{startTime},
-      </if>
-      <if test="endTime != null">
-        end_time = #{endTime},
-      </if>
-      <if test="waitingMinute != null">
-        waiting_minute = #{waitingMinute},
-      </if>
-      <if test="prepayId != null and prepayId != ''">
-        prepay_id = #{prepayId},
-      </if>
-      <if test="payId != null and payId != ''">
-        pay_id = #{payId},
-      </if>
-      <if test="payTime != null">
-        pay_time = #{payTime},
-      </if>
-      <if test="chargeRuleId != null">
-        charge_rule_id = #{chargeRuleId},
-      </if>
-      <if test="cancelRuleId != null">
-        cancel_rule_id = #{cancelRuleId},
-      </if>
-      <if test="carPlate != null and carPlate != ''">
-        car_plate = #{carPlate},
-      </if>
-      <if test="carType != null and carType != ''">
-        car_type = #{carType},
-      </if>
-      <if test="status != null">
-        `status` = #{status},
-      </if>
-      <if test="remark != null and remark != ''">
-        remark = #{remark},
-      </if>
-      <if test="createTime != null">
-        create_time = #{createTime},
-      </if>
-      <if test="updateTime != null">
-        update_time = #{updateTime},
-      </if>
-    </set>
-    where id = #{id}
-  </update>
+    <resultMap id="BaseResultMap" type="com.storyhasyou.odin.order.pojo.entity.Order">
+        <!--@mbg.generated-->
+        <!--@Table tb_order-->
+        <id column="id" property="id"/>
+        <result column="uuid" property="uuid"/>
+        <result column="customer_id" property="customerId"/>
+        <result column="start_place" property="startPlace"/>
+        <result column="start_place_location" property="startPlaceLocation"/>
+        <result column="end_place" property="endPlace"/>
+        <result column="end_place_location" property="endPlaceLocation"/>
+        <result column="expects_mileage" property="expectsMileage"/>
+        <result column="real_mileage" property="realMileage"/>
+        <result column="return_mileage" property="returnMileage"/>
+        <result column="expects_fee" property="expectsFee"/>
+        <result column="favour_fee" property="favourFee"/>
+        <result column="incentive_fee" property="incentiveFee"/>
+        <result column="real_fee" property="realFee"/>
+        <result column="driver_id" property="driverId"/>
+        <result column="date" property="date"/>
+        <result column="accept_time" property="acceptTime"/>
+        <result column="arrive_time" property="arriveTime"/>
+        <result column="start_time" property="startTime"/>
+        <result column="end_time" property="endTime"/>
+        <result column="waiting_minute" property="waitingMinute"/>
+        <result column="prepay_id" property="prepayId"/>
+        <result column="pay_id" property="payId"/>
+        <result column="pay_time" property="payTime"/>
+        <result column="charge_rule_id" property="chargeRuleId"/>
+        <result column="cancel_rule_id" property="cancelRuleId"/>
+        <result column="car_plate" property="carPlate"/>
+        <result column="car_type" property="carType"/>
+        <result column="status" property="status"/>
+        <result column="remark" property="remark"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, uuid, customer_id, start_place, start_place_location, end_place, end_place_location,
+        expects_mileage, real_mileage, return_mileage, expects_fee, favour_fee, incentive_fee,
+        real_fee, driver_id, `date`, accept_time, arrive_time, start_time, end_time, waiting_minute,
+        prepay_id, pay_id, pay_time, charge_rule_id, cancel_rule_id, car_plate, car_type,
+        `status`, remark, create_time, update_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from tb_order
+        where id = #{id}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete from tb_order
+        where id = #{id}
+    </delete>
+    <insert id="insertSelective" parameterType="com.storyhasyou.odin.order.pojo.entity.Order">
+        <!--@mbg.generated-->
+        insert into tb_order
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="uuid != null and uuid != ''">
+                uuid,
+            </if>
+            <if test="customerId != null">
+                customer_id,
+            </if>
+            <if test="startPlace != null and startPlace != ''">
+                start_place,
+            </if>
+            <if test="startPlaceLocation != null and startPlaceLocation != ''">
+                start_place_location,
+            </if>
+            <if test="endPlace != null and endPlace != ''">
+                end_place,
+            </if>
+            <if test="endPlaceLocation != null and endPlaceLocation != ''">
+                end_place_location,
+            </if>
+            <if test="expectsMileage != null">
+                expects_mileage,
+            </if>
+            <if test="realMileage != null">
+                real_mileage,
+            </if>
+            <if test="returnMileage != null">
+                return_mileage,
+            </if>
+            <if test="expectsFee != null">
+                expects_fee,
+            </if>
+            <if test="favourFee != null">
+                favour_fee,
+            </if>
+            <if test="incentiveFee != null">
+                incentive_fee,
+            </if>
+            <if test="realFee != null">
+                real_fee,
+            </if>
+            <if test="driverId != null">
+                driver_id,
+            </if>
+            <if test="date != null">
+                `date`,
+            </if>
+            <if test="acceptTime != null">
+                accept_time,
+            </if>
+            <if test="arriveTime != null">
+                arrive_time,
+            </if>
+            <if test="startTime != null">
+                start_time,
+            </if>
+            <if test="endTime != null">
+                end_time,
+            </if>
+            <if test="waitingMinute != null">
+                waiting_minute,
+            </if>
+            <if test="prepayId != null and prepayId != ''">
+                prepay_id,
+            </if>
+            <if test="payId != null and payId != ''">
+                pay_id,
+            </if>
+            <if test="payTime != null">
+                pay_time,
+            </if>
+            <if test="chargeRuleId != null">
+                charge_rule_id,
+            </if>
+            <if test="cancelRuleId != null">
+                cancel_rule_id,
+            </if>
+            <if test="carPlate != null and carPlate != ''">
+                car_plate,
+            </if>
+            <if test="carType != null and carType != ''">
+                car_type,
+            </if>
+            <if test="status != null">
+                `status`,
+            </if>
+            <if test="remark != null and remark != ''">
+                remark,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="uuid != null and uuid != ''">
+                #{uuid},
+            </if>
+            <if test="customerId != null">
+                #{customerId},
+            </if>
+            <if test="startPlace != null and startPlace != ''">
+                #{startPlace},
+            </if>
+            <if test="startPlaceLocation != null and startPlaceLocation != ''">
+                #{startPlaceLocation},
+            </if>
+            <if test="endPlace != null and endPlace != ''">
+                #{endPlace},
+            </if>
+            <if test="endPlaceLocation != null and endPlaceLocation != ''">
+                #{endPlaceLocation},
+            </if>
+            <if test="expectsMileage != null">
+                #{expectsMileage},
+            </if>
+            <if test="realMileage != null">
+                #{realMileage},
+            </if>
+            <if test="returnMileage != null">
+                #{returnMileage},
+            </if>
+            <if test="expectsFee != null">
+                #{expectsFee},
+            </if>
+            <if test="favourFee != null">
+                #{favourFee},
+            </if>
+            <if test="incentiveFee != null">
+                #{incentiveFee},
+            </if>
+            <if test="realFee != null">
+                #{realFee},
+            </if>
+            <if test="driverId != null">
+                #{driverId},
+            </if>
+            <if test="date != null">
+                #{date},
+            </if>
+            <if test="acceptTime != null">
+                #{acceptTime},
+            </if>
+            <if test="arriveTime != null">
+                #{arriveTime},
+            </if>
+            <if test="startTime != null">
+                #{startTime},
+            </if>
+            <if test="endTime != null">
+                #{endTime},
+            </if>
+            <if test="waitingMinute != null">
+                #{waitingMinute},
+            </if>
+            <if test="prepayId != null and prepayId != ''">
+                #{prepayId},
+            </if>
+            <if test="payId != null and payId != ''">
+                #{payId},
+            </if>
+            <if test="payTime != null">
+                #{payTime},
+            </if>
+            <if test="chargeRuleId != null">
+                #{chargeRuleId},
+            </if>
+            <if test="cancelRuleId != null">
+                #{cancelRuleId},
+            </if>
+            <if test="carPlate != null and carPlate != ''">
+                #{carPlate},
+            </if>
+            <if test="carType != null and carType != ''">
+                #{carType},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="remark != null and remark != ''">
+                #{remark},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.storyhasyou.odin.order.pojo.entity.Order">
+        <!--@mbg.generated-->
+        update tb_order
+        <set>
+            <if test="uuid != null and uuid != ''">
+                uuid = #{uuid},
+            </if>
+            <if test="customerId != null">
+                customer_id = #{customerId},
+            </if>
+            <if test="startPlace != null and startPlace != ''">
+                start_place = #{startPlace},
+            </if>
+            <if test="startPlaceLocation != null and startPlaceLocation != ''">
+                start_place_location = #{startPlaceLocation},
+            </if>
+            <if test="endPlace != null and endPlace != ''">
+                end_place = #{endPlace},
+            </if>
+            <if test="endPlaceLocation != null and endPlaceLocation != ''">
+                end_place_location = #{endPlaceLocation},
+            </if>
+            <if test="expectsMileage != null">
+                expects_mileage = #{expectsMileage},
+            </if>
+            <if test="realMileage != null">
+                real_mileage = #{realMileage},
+            </if>
+            <if test="returnMileage != null">
+                return_mileage = #{returnMileage},
+            </if>
+            <if test="expectsFee != null">
+                expects_fee = #{expectsFee},
+            </if>
+            <if test="favourFee != null">
+                favour_fee = #{favourFee},
+            </if>
+            <if test="incentiveFee != null">
+                incentive_fee = #{incentiveFee},
+            </if>
+            <if test="realFee != null">
+                real_fee = #{realFee},
+            </if>
+            <if test="driverId != null">
+                driver_id = #{driverId},
+            </if>
+            <if test="date != null">
+                `date` = #{date},
+            </if>
+            <if test="acceptTime != null">
+                accept_time = #{acceptTime},
+            </if>
+            <if test="arriveTime != null">
+                arrive_time = #{arriveTime},
+            </if>
+            <if test="startTime != null">
+                start_time = #{startTime},
+            </if>
+            <if test="endTime != null">
+                end_time = #{endTime},
+            </if>
+            <if test="waitingMinute != null">
+                waiting_minute = #{waitingMinute},
+            </if>
+            <if test="prepayId != null and prepayId != ''">
+                prepay_id = #{prepayId},
+            </if>
+            <if test="payId != null and payId != ''">
+                pay_id = #{payId},
+            </if>
+            <if test="payTime != null">
+                pay_time = #{payTime},
+            </if>
+            <if test="chargeRuleId != null">
+                charge_rule_id = #{chargeRuleId},
+            </if>
+            <if test="cancelRuleId != null">
+                cancel_rule_id = #{cancelRuleId},
+            </if>
+            <if test="carPlate != null and carPlate != ''">
+                car_plate = #{carPlate},
+            </if>
+            <if test="carType != null and carType != ''">
+                car_type = #{carType},
+            </if>
+            <if test="status != null">
+                `status` = #{status},
+            </if>
+            <if test="remark != null and remark != ''">
+                remark = #{remark},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="selectTodayOrderSummary" resultType="com.storyhasyou.odin.order.pojo.model.OrderSummary">
+        select
+        ifnull(sum(timestampdiff(hour, start_time, end_time)), 0) as drivingDuration,
+        ifnull(sum(real_fee), 0) as todayIncome,
+        count(*) as todayOrderCount
+        from tb_order
+        where date = current_date
+        and driver_id = #{driverId}
+        and status in
+        <foreach collection="@com.storyhasyou.odin.order.enums.order.OrderStatusEnum@effective()"
+                 item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
 </mapper>

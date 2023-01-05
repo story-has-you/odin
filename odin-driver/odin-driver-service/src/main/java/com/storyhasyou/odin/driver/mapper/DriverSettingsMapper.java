@@ -13,4 +13,6 @@ public interface DriverSettingsMapper {
     int insertSelective(DriverSettings record);
 
     DriverSettings selectByPrimaryKey(Long id);
+
+    DriverSettings selectByDriverId(Long driverId);
 }

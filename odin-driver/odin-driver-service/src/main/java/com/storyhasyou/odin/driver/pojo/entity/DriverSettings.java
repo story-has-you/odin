@@ -6,9 +6,6 @@ import lombok.EqualsAndHashCode;
 
 /**
  * @author fangxi created by 2022/12/29
- */
-
-/**
  * 司机设置表
  */
 @Data

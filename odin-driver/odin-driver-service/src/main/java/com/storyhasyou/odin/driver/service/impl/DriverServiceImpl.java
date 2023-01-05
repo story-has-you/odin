@@ -9,13 +9,15 @@ import com.storyhasyou.odin.driver.emums.driver.DriverRealAuthEnum;
 import com.storyhasyou.odin.driver.emums.driver.DriverStatusEnum;
 import com.storyhasyou.odin.driver.mapper.DriverMapper;
 import com.storyhasyou.odin.driver.pojo.entity.Driver;
+import com.storyhasyou.odin.driver.pojo.entity.DriverSettings;
 import com.storyhasyou.odin.driver.pojo.entity.Wallet;
 import com.storyhasyou.odin.driver.pojo.model.CurrentDriver;
-import com.storyhasyou.odin.driver.pojo.model.DriverSettings;
+import com.storyhasyou.odin.driver.pojo.model.DriverSettingsModel;
 import com.storyhasyou.odin.driver.pojo.model.DriverSummary;
 import com.storyhasyou.odin.driver.pojo.vo.request.RegisterDriverRequestVO;
 import com.storyhasyou.odin.driver.pojo.vo.request.UpdateDriverRequestVO;
 import com.storyhasyou.odin.driver.pojo.vo.response.DriverResponseVO;
+import com.storyhasyou.odin.driver.pojo.vo.response.DriverSettingsResponseVO;
 import com.storyhasyou.odin.driver.service.DriverRedisService;
 import com.storyhasyou.odin.driver.service.interfaces.DriverService;
 import com.storyhasyou.odin.driver.service.interfaces.DriverSettingsService;
@@ -109,6 +111,13 @@ public class DriverServiceImpl implements DriverService {
                 .orElseThrow(() -> new BusinessException("司机不存在"));
     }
 
+    @Override
+    public DriverSettingsResponseVO selectDriverSettings(long driverId) {
+        DriverSettings driverSettings = driverSettingsService.selectByDriverId(driverId);
+        String settings = driverSettings.getSettings();
+        return JacksonUtils.parse(settings, DriverSettingsResponseVO.class);
+    }
+
     private void initWallet(long driverId) {
         Wallet wallet = new Wallet();
         wallet.setId(IdUtil.getSnowflakeNextId());
@@ -118,10 +127,10 @@ public class DriverServiceImpl implements DriverService {
     }
 
     private void initDriverSettings(long driverId) {
-        com.storyhasyou.odin.driver.pojo.entity.DriverSettings driverSettings = new com.storyhasyou.odin.driver.pojo.entity.DriverSettings();
+        DriverSettings driverSettings = new DriverSettings();
         driverSettings.setId(IdUtil.getSnowflakeNextId());
         driverSettings.setDriverId(driverId);
-        DriverSettings defaultSettings = new DriverSettings("", false, 0, 5, false);
+        DriverSettingsModel defaultSettings = new DriverSettingsModel("", false, 0, 5, false);
         driverSettings.setSettings(JacksonUtils.serialize(defaultSettings));
         driverSettingsService.insertSelective(driverSettings);
     }

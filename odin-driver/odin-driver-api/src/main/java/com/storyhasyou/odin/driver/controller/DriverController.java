@@ -5,6 +5,7 @@ import com.storyhasyou.odin.driver.pojo.model.CurrentDriver;
 import com.storyhasyou.odin.driver.pojo.vo.request.RegisterDriverRequestVO;
 import com.storyhasyou.odin.driver.pojo.vo.request.UpdateDriverRequestVO;
 import com.storyhasyou.odin.driver.pojo.vo.response.DriverResponseVO;
+import com.storyhasyou.odin.driver.pojo.vo.response.DriverSettingsResponseVO;
 import com.storyhasyou.odin.driver.service.interfaces.DriverService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -16,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 /**
  * @author fangxi created by 2022/12/30
  */
-@Tag(name = "司机服务")
+@Tag(name = "司机接口")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/driver")
@@ -54,8 +55,15 @@ public class DriverController {
 
     @GetMapping("/{driverId}")
     @Operation(summary = "获取司机信息")
-    public Result<DriverResponseVO> getDriver(@PathVariable Long driverId) {
+    public Result<DriverResponseVO> selectDriver(@PathVariable Long driverId) {
         DriverResponseVO driver = driverService.selectById(driverId);
         return Result.ok(driver);
+    }
+
+    @GetMapping("/settings/{driverId}")
+    @Operation(summary = "获取司机配置信息")
+    public Result<DriverSettingsResponseVO> selectDriverSettings(@PathVariable Long driverId) {
+        DriverSettingsResponseVO driverSettings = driverService.selectDriverSettings(driverId);
+        return Result.ok(driverSettings);
     }
 }

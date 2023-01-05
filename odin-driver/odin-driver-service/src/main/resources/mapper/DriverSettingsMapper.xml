@@ -64,4 +64,11 @@
       </if>
     </trim>
   </insert>
+
+  <select id="selectByDriverId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_driver_settings
+    where driver_id = #{driverId}
+  </select>
 </mapper>

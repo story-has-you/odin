@@ -9,5 +9,6 @@ public interface DriverSettingsService {
 
     long insertSelective(DriverSettings driverSettings);
 
+    DriverSettings selectByDriverId(long driverId);
 
 }

@@ -1,6 +1,7 @@
 package com.storyhasyou.odin.order.mapper;
 
 import com.storyhasyou.odin.order.pojo.entity.Order;
+import com.storyhasyou.odin.order.pojo.model.OrderSummary;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -15,4 +16,6 @@ public interface OrderMapper {
     Order selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(Order record);
+
+    OrderSummary selectTodayOrderSummary(Long driverId);
 }
