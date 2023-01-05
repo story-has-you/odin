@@ -1,4 +1,4 @@
-package com.storyhasyou.odin.driver;
+package com.storyhasyou.odin.order;
 
 import com.storyhasyou.kratos.annotation.EnableBladesOfChaos;
 import org.springframework.boot.SpringApplication;
@@ -6,15 +6,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
- * @author fangxi created by 2022/12/29
+ * @author fangxi created by 2023/1/5
  */
 @EnableBladesOfChaos
 @EnableDiscoveryClient
 @SpringBootApplication(scanBasePackages = "com.storyhasyou.odin")
-public class DriverApplication {
+public class OdinOrderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DriverApplication.class, args);
+        SpringApplication.run(OdinOrderApplication.class, args);
     }
 
 }

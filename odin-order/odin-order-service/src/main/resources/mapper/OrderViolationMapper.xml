@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.storyhasyou.odin.order.mapper.OrderViolationMapper">
+  <resultMap id="BaseResultMap" type="com.storyhasyou.odin.order.pojo.entity.OrderViolation">
+    <!--@mbg.generated-->
+    <!--@Table tb_order_violation-->
+    <id column="id" property="id" />
+    <result column="order_id" property="orderId" />
+    <result column="driver_id" property="driverId" />
+    <result column="type" property="type" />
+    <result column="reason" property="reason" />
+    <result column="status" property="status" />
+    <result column="instance_id" property="instanceId" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, order_id, driver_id, `type`, reason, `status`, instance_id, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_order_violation
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from tb_order_violation
+    where id = #{id}
+  </delete>
+  <insert id="insertSelective" parameterType="com.storyhasyou.odin.order.pojo.entity.OrderViolation">
+    <!--@mbg.generated-->
+    insert into tb_order_violation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="driverId != null">
+        driver_id,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="reason != null and reason != ''">
+        reason,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="instanceId != null and instanceId != ''">
+        instance_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id},
+      </if>
+      <if test="orderId != null">
+        #{orderId},
+      </if>
+      <if test="driverId != null">
+        #{driverId},
+      </if>
+      <if test="type != null">
+        #{type},
+      </if>
+      <if test="reason != null and reason != ''">
+        #{reason},
+      </if>
+      <if test="status != null">
+        #{status},
+      </if>
+      <if test="instanceId != null and instanceId != ''">
+        #{instanceId},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.storyhasyou.odin.order.pojo.entity.OrderViolation">
+    <!--@mbg.generated-->
+    update tb_order_violation
+    <set>
+      <if test="orderId != null">
+        order_id = #{orderId},
+      </if>
+      <if test="driverId != null">
+        driver_id = #{driverId},
+      </if>
+      <if test="type != null">
+        `type` = #{type},
+      </if>
+      <if test="reason != null and reason != ''">
+        reason = #{reason},
+      </if>
+      <if test="status != null">
+        `status` = #{status},
+      </if>
+      <if test="instanceId != null and instanceId != ''">
+        instance_id = #{instanceId},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+</mapper>

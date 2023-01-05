@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.storyhasyou.odin.order.mapper.OrderCallMapper">
+  <resultMap id="BaseResultMap" type="com.storyhasyou.odin.order.pojo.entity.OrderCall">
+    <!--@mbg.generated-->
+    <!--@Table tb_order_call-->
+    <id column="id" property="id" />
+    <result column="order_id" property="orderId" />
+    <result column="minute" property="minute" />
+    <result column="start_time" property="startTime" />
+    <result column="end_time" property="endTime" />
+    <result column="fee" property="fee" />
+    <result column="date" property="date" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, order_id, `minute`, start_time, end_time, fee, `date`, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_order_call
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from tb_order_call
+    where id = #{id}
+  </delete>
+  <insert id="insertSelective" parameterType="com.storyhasyou.odin.order.pojo.entity.OrderCall">
+    <!--@mbg.generated-->
+    insert into tb_order_call
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="minute != null">
+        `minute`,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="fee != null">
+        fee,
+      </if>
+      <if test="date != null">
+        `date`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id},
+      </if>
+      <if test="orderId != null">
+        #{orderId},
+      </if>
+      <if test="minute != null">
+        #{minute},
+      </if>
+      <if test="startTime != null">
+        #{startTime},
+      </if>
+      <if test="endTime != null">
+        #{endTime},
+      </if>
+      <if test="fee != null">
+        #{fee},
+      </if>
+      <if test="date != null">
+        #{date},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.storyhasyou.odin.order.pojo.entity.OrderCall">
+    <!--@mbg.generated-->
+    update tb_order_call
+    <set>
+      <if test="orderId != null">
+        order_id = #{orderId},
+      </if>
+      <if test="minute != null">
+        `minute` = #{minute},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime},
+      </if>
+      <if test="fee != null">
+        fee = #{fee},
+      </if>
+      <if test="date != null">
+        `date` = #{date},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+</mapper>

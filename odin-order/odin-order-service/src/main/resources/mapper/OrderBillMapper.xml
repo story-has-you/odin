@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.storyhasyou.odin.order.mapper.OrderBillMapper">
+  <resultMap id="BaseResultMap" type="com.storyhasyou.odin.order.pojo.entity.OrderBill">
+    <!--@mbg.generated-->
+    <!--@Table tb_order_bill-->
+    <id column="id" property="id" />
+    <result column="order_id" property="orderId" />
+    <result column="total" property="total" />
+    <result column="real_pay" property="realPay" />
+    <result column="mileage_fee" property="mileageFee" />
+    <result column="tel_fee" property="telFee" />
+    <result column="waiting_fee" property="waitingFee" />
+    <result column="toll_fee" property="tollFee" />
+    <result column="parking_fee" property="parkingFee" />
+    <result column="other_fee" property="otherFee" />
+    <result column="return_fee" property="returnFee" />
+    <result column="favour_fee" property="favourFee" />
+    <result column="incentive_fee" property="incentiveFee" />
+    <result column="voucher_fee" property="voucherFee" />
+    <result column="detail" property="detail" />
+    <result column="base_mileage" property="baseMileage" />
+    <result column="base_mileage_price" property="baseMileagePrice" />
+    <result column="exceed_mileage_price" property="exceedMileagePrice" />
+    <result column="base_minute" property="baseMinute" />
+    <result column="exceed_minute_price" property="exceedMinutePrice" />
+    <result column="base_return_mileage" property="baseReturnMileage" />
+    <result column="exceed_return_price" property="exceedReturnPrice" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, order_id, total, real_pay, mileage_fee, tel_fee, waiting_fee, toll_fee, parking_fee, 
+    other_fee, return_fee, favour_fee, incentive_fee, voucher_fee, detail, base_mileage, 
+    base_mileage_price, exceed_mileage_price, base_minute, exceed_minute_price, base_return_mileage, 
+    exceed_return_price, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_order_bill
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from tb_order_bill
+    where id = #{id}
+  </delete>
+  <insert id="insertSelective" parameterType="com.storyhasyou.odin.order.pojo.entity.OrderBill">
+    <!--@mbg.generated-->
+    insert into tb_order_bill
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="total != null">
+        total,
+      </if>
+      <if test="realPay != null">
+        real_pay,
+      </if>
+      <if test="mileageFee != null">
+        mileage_fee,
+      </if>
+      <if test="telFee != null">
+        tel_fee,
+      </if>
+      <if test="waitingFee != null">
+        waiting_fee,
+      </if>
+      <if test="tollFee != null">
+        toll_fee,
+      </if>
+      <if test="parkingFee != null">
+        parking_fee,
+      </if>
+      <if test="otherFee != null">
+        other_fee,
+      </if>
+      <if test="returnFee != null">
+        return_fee,
+      </if>
+      <if test="favourFee != null">
+        favour_fee,
+      </if>
+      <if test="incentiveFee != null">
+        incentive_fee,
+      </if>
+      <if test="voucherFee != null">
+        voucher_fee,
+      </if>
+      <if test="detail != null and detail != ''">
+        detail,
+      </if>
+      <if test="baseMileage != null">
+        base_mileage,
+      </if>
+      <if test="baseMileagePrice != null">
+        base_mileage_price,
+      </if>
+      <if test="exceedMileagePrice != null">
+        exceed_mileage_price,
+      </if>
+      <if test="baseMinute != null">
+        base_minute,
+      </if>
+      <if test="exceedMinutePrice != null">
+        exceed_minute_price,
+      </if>
+      <if test="baseReturnMileage != null">
+        base_return_mileage,
+      </if>
+      <if test="exceedReturnPrice != null">
+        exceed_return_price,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id},
+      </if>
+      <if test="orderId != null">
+        #{orderId},
+      </if>
+      <if test="total != null">
+        #{total},
+      </if>
+      <if test="realPay != null">
+        #{realPay},
+      </if>
+      <if test="mileageFee != null">
+        #{mileageFee},
+      </if>
+      <if test="telFee != null">
+        #{telFee},
+      </if>
+      <if test="waitingFee != null">
+        #{waitingFee},
+      </if>
+      <if test="tollFee != null">
+        #{tollFee},
+      </if>
+      <if test="parkingFee != null">
+        #{parkingFee},
+      </if>
+      <if test="otherFee != null">
+        #{otherFee},
+      </if>
+      <if test="returnFee != null">
+        #{returnFee},
+      </if>
+      <if test="favourFee != null">
+        #{favourFee},
+      </if>
+      <if test="incentiveFee != null">
+        #{incentiveFee},
+      </if>
+      <if test="voucherFee != null">
+        #{voucherFee},
+      </if>
+      <if test="detail != null and detail != ''">
+        #{detail},
+      </if>
+      <if test="baseMileage != null">
+        #{baseMileage},
+      </if>
+      <if test="baseMileagePrice != null">
+        #{baseMileagePrice},
+      </if>
+      <if test="exceedMileagePrice != null">
+        #{exceedMileagePrice},
+      </if>
+      <if test="baseMinute != null">
+        #{baseMinute},
+      </if>
+      <if test="exceedMinutePrice != null">
+        #{exceedMinutePrice},
+      </if>
+      <if test="baseReturnMileage != null">
+        #{baseReturnMileage},
+      </if>
+      <if test="exceedReturnPrice != null">
+        #{exceedReturnPrice},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.storyhasyou.odin.order.pojo.entity.OrderBill">
+    <!--@mbg.generated-->
+    update tb_order_bill
+    <set>
+      <if test="orderId != null">
+        order_id = #{orderId},
+      </if>
+      <if test="total != null">
+        total = #{total},
+      </if>
+      <if test="realPay != null">
+        real_pay = #{realPay},
+      </if>
+      <if test="mileageFee != null">
+        mileage_fee = #{mileageFee},
+      </if>
+      <if test="telFee != null">
+        tel_fee = #{telFee},
+      </if>
+      <if test="waitingFee != null">
+        waiting_fee = #{waitingFee},
+      </if>
+      <if test="tollFee != null">
+        toll_fee = #{tollFee},
+      </if>
+      <if test="parkingFee != null">
+        parking_fee = #{parkingFee},
+      </if>
+      <if test="otherFee != null">
+        other_fee = #{otherFee},
+      </if>
+      <if test="returnFee != null">
+        return_fee = #{returnFee},
+      </if>
+      <if test="favourFee != null">
+        favour_fee = #{favourFee},
+      </if>
+      <if test="incentiveFee != null">
+        incentive_fee = #{incentiveFee},
+      </if>
+      <if test="voucherFee != null">
+        voucher_fee = #{voucherFee},
+      </if>
+      <if test="detail != null and detail != ''">
+        detail = #{detail},
+      </if>
+      <if test="baseMileage != null">
+        base_mileage = #{baseMileage},
+      </if>
+      <if test="baseMileagePrice != null">
+        base_mileage_price = #{baseMileagePrice},
+      </if>
+      <if test="exceedMileagePrice != null">
+        exceed_mileage_price = #{exceedMileagePrice},
+      </if>
+      <if test="baseMinute != null">
+        base_minute = #{baseMinute},
+      </if>
+      <if test="exceedMinutePrice != null">
+        exceed_minute_price = #{exceedMinutePrice},
+      </if>
+      <if test="baseReturnMileage != null">
+        base_return_mileage = #{baseReturnMileage},
+      </if>
+      <if test="exceedReturnPrice != null">
+        exceed_return_price = #{exceedReturnPrice},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+</mapper>
