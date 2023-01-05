@@ -7,6 +7,5 @@ spring:
     import:
       - optional:nacos:odin-order.yaml
       - optional:nacos:register.yaml
-      - optional:nacos:sentinel.yaml
       - optional:nacos:mybatis.yaml
       - optional:nacos:redis.yaml
